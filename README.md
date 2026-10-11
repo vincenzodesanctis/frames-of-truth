@@ -14,11 +14,19 @@ Built for the **Hacktoberfest Open-Source AI Challenge 2026 — Week 1: Touch Gr
 
 ## 📱 Screenshots
 
-![Main screen](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/nkrtud0g9pt1am3yxukz.jpg)
-![Story generated](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/b7kteazme6hnmd1wv847.jpg)
-![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ttxgi00whyzu8p6khco1.jpg)
-![Investigative report](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ksa3w34mtuaeqwrxtyw3.jpg)
-![API keys modal](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/90f0fqpwzf7r31baq5ok.jpg)
+<p>
+<img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/nkrtud0g9pt1am3yxukz.jpg" width="45%" alt="Main screen" />
+<img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/b7kteazme6hnmd1wv847.jpg" width="45%" alt="Story generated" />
+</p>
+
+<p>
+<img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ttxgi00whyzu8p6khco1.jpg" width="45%" alt="Image description" />
+<img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ksa3w34mtuaeqwrxtyw3.jpg" width="45%" alt="Investigative report" />
+</p>
+
+<p>
+<img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/90f0fqpwzf7r31baq5ok.jpg" width="45%" alt="API keys modal" />
+</p>
 
 ---
 
