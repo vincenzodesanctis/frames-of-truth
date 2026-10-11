@@ -250,6 +250,18 @@ Aligned with the \*\*"Touch Grass"\*\* theme.
 
 
 
+\## 📖 New to the app?
+
+
+
+See the \[User Guide](USER\_GUIDE.md) for step-by-step instructions on installing and using Frames of Truth.
+
+
+
+\---
+
+
+
 Made with ❤️ by \[Vincenzo De Sanctis](https://github.com/vincenzodesanctis)
 
 
