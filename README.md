@@ -12,6 +12,16 @@ Built for the **Hacktoberfest Open-Source AI Challenge 2026 — Week 1: Touch Gr
 
 ---
 
+## 📱 Screenshots
+
+![Main screen](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/nkrtud0g9pt1am3yxukz.jpg)
+![Story generated](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/b7kteazme6hnmd1wv847.jpg)
+![Image description](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ttxgi00whyzu8p6khco1.jpg)
+![Investigative report](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/ksa3w34mtuaeqwrxtyw3.jpg)
+![API keys modal](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/90f0fqpwzf7r31baq5ok.jpg)
+
+---
+
 ## ✨ Features
 
 - 📷 **Take or choose a photo** from your device
@@ -69,22 +79,19 @@ Why open source matters here:
 
 1. Clone this repository
 2. Open the project in Android Studio
-3. Build the APK: `Build -> Build Bundle(s) / APK(s) -> Build APK(s)`
+3. Build the APK
 4. Install on your device
 5. **On first launch, open the gear menu and enter your API keys**
 
 ### API Keys format
 
-You can import API keys from a simple `.txt` file:
+You can import API keys from a simple `.txt` file. Each key goes on its own line:
 
-
-
-GROQ_API_KEY=gsk_xxxxxxxxxxxxx
-GEOAPIFY_API_KEY=xxxxxxxxxxxxx
-GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxx
-HF_TOKEN=hf_xxxxxxxxxxxxx
-OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxx
-
+- `GROQ_API_KEY=gsk_xxxxxxxxxxxxx`
+- `GEOAPIFY_API_KEY=xxxxxxxxxxxxx`
+- `GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxx`
+- `HF_TOKEN=hf_xxxxxxxxxxxxx`
+- `OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxx`
 
 Lines starting with `#` are ignored. Missing fields remain unchanged.
 
