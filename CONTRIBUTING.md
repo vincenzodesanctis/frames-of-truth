@@ -1,4 +1,4 @@
-\# Contributing to Frames of Truth
+# Contributing to Frames of Truth
 
 
 
@@ -6,57 +6,57 @@ Thanks for your interest in contributing! 🎉
 
 
 
-\## How to contribute
+## How to contribute
 
 
 
-1\. \*\*Fork\*\* the repository
+1. **Fork** the repository
 
-2\. \*\*Clone\*\* your fork locally
+2. **Clone** your fork locally
 
-3\. Create a \*\*feature branch\*\* (`git checkout -b feature/amazing-feature`)
+3. Create a **feature branch** (`git checkout -b feature/amazing-feature`)
 
-4\. Make your changes
+4. Make your changes
 
-5\. \*\*Commit\*\* with a clear message
+5. **Commit** with a clear message
 
-6\. \*\*Push\*\* to your fork
+6. **Push** to your fork
 
-7\. Open a \*\*Pull Request\*\*
-
-
-
-\## What we're looking for
+7. Open a **Pull Request**
 
 
 
-\- Bug fixes
-
-\- New features (check the Issues tab)
-
-\- Documentation improvements
-
-\- Translations for new languages
-
-\- UI/UX improvements
+## What we're looking for
 
 
 
-\## Code style
+- Bug fixes
+
+- New features (check the Issues tab)
+
+- Documentation improvements
+
+- Translations for new languages
+
+- UI/UX improvements
 
 
 
-\- \*\*Kotlin\*\*: 4 spaces, no tabs
-
-\- \*\*Python\*\*: PEP 8
-
-\- \*\*JavaScript\*\*: 4 spaces, consistent semicolons
-
-\- \*\*CSS\*\*: follow the existing structure
+## Code style
 
 
 
-\## Never commit API keys
+- **Kotlin**: 4 spaces, no tabs
+
+- **Python**: PEP 8
+
+- **JavaScript**: 4 spaces, consistent semicolons
+
+- **CSS**: follow the existing structure
+
+
+
+## Never commit API keys
 
 
 
@@ -66,7 +66,7 @@ Use empty strings in `app.py`.
 
 
 
-\## Questions?
+## Questions?
 
 
 
