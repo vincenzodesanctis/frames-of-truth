@@ -250,11 +250,11 @@ Aligned with the \*\*"Touch Grass"\*\* theme.
 
 
 
-\## 📖 New to the app?
+\## 📖 User Guide
 
 
 
-See the \[User Guide](USER\_GUIDE.md) for step-by-step instructions on installing and using Frames of Truth.
+Read the \[User Guide](USER\_GUIDE.md) for step-by-step instructions on installation, API key setup, and usage.
 
 
 
