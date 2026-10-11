@@ -9,6 +9,8 @@ Built for the **Hacktoberfest Open-Source AI Challenge 2026 — Week 1: Touch Gr
 [![Hacktoberfest 2026](https://img.shields.io/badge/Hacktoberfest-2026-orange)](https://hacktoberfest.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Android](https://img.shields.io/badge/Android-7.0%2B-green)](https://developer.android.com)
+[![Architecture](https://img.shields.io/badge/docs-architecture-blue)](ARCHITECTURE.md)
+[![Changelog](https://img.shields.io/badge/docs-changelog-green)](CHANGELOG.md)
 
 ---
 
