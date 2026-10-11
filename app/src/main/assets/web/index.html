@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frames of Truth</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="app-header">
+        <button id="api-settings-btn" title="API Settings">⚙️</button>
+        <div id="lang-selector">
+            <button id="lang-btn" title="Change language">
+                <span id="lang-flag">🇬🇧</span>
+                <span id="lang-code">EN</span>
+                <span class="arrow">▾</span>
+            </button>
+            <div id="lang-menu">
+                <div class="lang-option" data-lang="it"><span>🇮🇹</span> Italiano</div>
+                <div class="lang-option" data-lang="en"><span>🇬🇧</span> English</div>
+                <div class="lang-option" data-lang="fr"><span>🇫🇷</span> Français</div>
+                <div class="lang-option" data-lang="de"><span>🇩🇪</span> Deutsch</div>
+                <div class="lang-option" data-lang="es"><span>🇪🇸</span> Español</div>
+                <div class="lang-option" data-lang="pt"><span>🇵🇹</span> Português</div>
+                <div class="lang-option" data-lang="nl"><span>🇳🇱</span> Nederlands</div>
+            </div>
+        </div>
+        <h1>Frames of Truth</h1>
+        <p id="app-subtitle">Discover the story of the place you photograph</p>
+    </div>
+
+    <div id="controls">
+        <h3 id="controls-title">Take or drag a photo</h3>
+
+        <div id="drop-zone">
+            <p class="drop-text" id="drop-text">Drag your photo here</p>
+            <p class="drop-sub" id="drop-sub">or</p>
+            <p style="font-size:0.8em;color:#888;margin:8px 0 0 0;">
+                JPG · JPEG · PNG · GIF · WEBP · BMP · TIFF · HEIC — max 120 MB
+            </p>
+            <input type="file" id="photo-input" accept="image/*" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0;">
+            <button type="button" class="file-label" id="file-label-btn">Choose from device</button>
+            <button type="button" class="file-label" id="camera-btn" style="margin-left: 8px;">📷 Take photo</button>
+        </div>
+
+        <img id="preview" alt="Preview" />
+
+        <div id="info-panel">
+            <p id="status-text">Select or drag a photo to generate the story automatically.</p>
+            <p id="coords-text"></p>
+            <div id="mini-log" style="display:none;">
+                <div id="mini-log-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="story-container">
+        <p id="story-text">The story will appear here...</p>
+        <div id="discover-wrapper" style="display:none;">
+            <button id="discover-btn">Discover facts and secrets of this place</button>
+        </div>
+    </div>
+
+    <div id="discover-container" style="display:none;">
+        <h3 id="discover-title">Investigative report</h3>
+        <div id="discover-loading" style="display:none;">
+            <div class="spinner"></div>
+            <p>Investigation in progress...</p>
+        </div>
+        <div id="discover-result"></div>
+    </div>
+
+    <div id="map-container">
+        <p id="map-label">Photo location</p>
+        <div id="map"></div>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged photo">
+    </div>
+
+    <!-- API KEYS MODAL -->
+    <div id="api-modal" class="api-modal">
+        <div class="api-modal-content">
+            <div class="api-modal-header">
+                <h2>⚙️ API Keys</h2>
+                <button id="api-modal-close" class="api-modal-close" type="button">&times;</button>
+            </div>
+            <div class="api-modal-body">
+                <p class="api-intro">
+                    Inserisci le tue chiavi API manualmente qui sotto, oppure importale da un file <strong>.txt</strong>.
+                    Se lasci un campo vuoto, verrà usata la chiave di default.
+                </p>
+
+                <button type="button" id="api-import-btn" class="api-import-btn">
+                    📥 Importa da file .txt
+                </button>
+
+                <details class="api-format-help">
+                    <summary>Formato del file .txt (clicca per aprire)</summary>
+                    <p class="api-format-desc">Il file deve essere un semplice testo con una chiave per riga nel formato <code>NOME_CHIAVE=valore</code>. Esempio:</p>
+                    <pre>GROQ_API_KEY=gsk_xxxxxxxxxxxxx
+GEOAPIFY_API_KEY=db45168dxxxxxxxxxxxx
+GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxx
+HF_TOKEN=hf_xxxxxxxxxxxxx
+OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxx</pre>
+                    <p class="api-format-note">
+                        • Le righe che iniziano con <code>#</code> sono ignorate (utili per commenti).<br>
+                        • I campi mancanti restano invariati.<br>
+                        • Il riconoscimento è automatico: <code>groq</code>, <code>geoapify</code>, <code>gemini</code>, <code>hf</code>/<code>hugging</code>, <code>openrouter</code>.
+                    </p>
+                </details>
+
+                <div class="api-field">
+                    <label for="api-groq">Groq API Key <span class="api-required">*</span></label>
+                    <div class="api-input-wrapper">
+                        <input type="password" id="api-groq" placeholder="gsk_..." autocomplete="off">
+                        <button type="button" class="api-toggle" data-target="api-groq">👁</button>
+                    </div>
+                    <small>Ottienila su <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a></small>
+                </div>
+
+                <div class="api-field">
+                    <label for="api-geoapify">Geoapify API Key <span class="api-required">*</span></label>
+                    <div class="api-input-wrapper">
+                        <input type="password" id="api-geoapify" placeholder="xxxxx..." autocomplete="off">
+                        <button type="button" class="api-toggle" data-target="api-geoapify">👁</button>
+                    </div>
+                    <small>Ottienila su <a href="https://myprojects.geoapify.com/" target="_blank">myprojects.geoapify.com</a></small>
+                </div>
+
+                <div class="api-field">
+                    <label for="api-gemini">Gemini API Key <span class="api-optional">(opzionale — fallback vision)</span></label>
+                    <div class="api-input-wrapper">
+                        <input type="password" id="api-gemini" placeholder="AIza..." autocomplete="off">
+                        <button type="button" class="api-toggle" data-target="api-gemini">👁</button>
+                    </div>
+                    <small>Ottienila su <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></small>
+                </div>
+
+                <div class="api-field">
+                    <label for="api-hf">Hugging Face Token <span class="api-optional">(opzionale)</span></label>
+                    <div class="api-input-wrapper">
+                        <input type="password" id="api-hf" placeholder="hf_..." autocomplete="off">
+                        <button type="button" class="api-toggle" data-target="api-hf">👁</button>
+                    </div>
+                    <small>Ottienilo su <a href="https://huggingface.co/settings/tokens" target="_blank">huggingface.co/settings/tokens</a></small>
+                </div>
+
+                <div class="api-field">
+                    <label for="api-openrouter">OpenRouter API Key <span class="api-optional">(opzionale — fallback testo)</span></label>
+                    <div class="api-input-wrapper">
+                        <input type="password" id="api-openrouter" placeholder="sk-or-v1-..." autocomplete="off">
+                        <button type="button" class="api-toggle" data-target="api-openrouter">👁</button>
+                    </div>
+                    <small>Ottienila su <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a></small>
+                </div>
+            </div>
+            <div class="api-modal-footer">
+                <button id="api-cancel" class="api-btn api-btn-secondary" type="button">Annulla</button>
+                <button id="api-save" class="api-btn api-btn-primary" type="button">Salva</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/script.js"></script>
+<div id="app-info">
+    <p><strong>Frames of Truth</strong> v1.0.0</p>
+    <p class="app-info-license">
+        Open source project · <a href="https://github.com/vincenzodesanctis/frames-of-truth/blob/main/LICENSE" target="_blank">MIT License</a>
+    </p>
+    <p>
+        <a href="https://github.com/vincenzodesanctis/frames-of-truth" target="_blank">🐙 GitHub</a> ·
+        <a href="https://github.com/vincenzodesanctis/frames-of-truth#readme" target="_blank">📖 About</a> ·
+        <a href="https://github.com/vincenzodesanctis/frames-of-truth/issues" target="_blank">🐛 Report a bug</a>
+    </p>
+</div>
+</body>
+</html>
